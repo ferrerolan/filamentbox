@@ -9,8 +9,13 @@
 >
     <div>
         <x-filament::header.heading>
-            <img src="/logo.jpeg" alt="logo">
-            {{ $heading }}
+
+        <div class="flex items-center">
+            <div><img class="mr-2 w-20" src="/logo.jpeg" alt="logo"></div>
+            <div>{{ $heading }}</div>
+        </div>
+            
+            
         </x-filament::header.heading>
 
         @if ($subheading)

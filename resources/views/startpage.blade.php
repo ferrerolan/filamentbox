@@ -147,11 +147,11 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="about.html">About</a>
+            <a class="nav-link " href="about.html">Sobre</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="property-grid.html">Property</a>
+            <a class="nav-link " href="property-grid.html">Equipe</a>
           </li>
 
           <li class="nav-item">
@@ -161,14 +161,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item " href="property-single.html">Property Single</a>
-              <a class="dropdown-item " href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item " href="agent-single.html">Agent Single</a>
+              <a class="dropdown-item " href="property-single.html">Produtos</a>
+              <a class="dropdown-item " href="blog-single.html">Sobre</a>
+              <a class="dropdown-item " href="agents-grid.html">IA</a>
+              <a class="dropdown-item " href="agent-single.html">Parcerias</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="contact.html">Contact</a>
+            <a class="nav-link " href="contact.html">Contato</a>
           </li>
         </ul>
       </div>
@@ -193,12 +193,11 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
                       <br> 78345
                     </p>
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">204 </span> Mount
-                      <br> Olive Road Two
+                      <span class="color-b">unitbox </span> Pense fora,
+                      <br> Da Caixa.
                     </h1>
                     <p class="intro-subtitle intro-price">
                       <a href="#"><span class="price-a">rent | $ 12.000</span></a>
@@ -273,7 +272,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Our Services</h2>
+                <h2 class="title-a">Nossos Serviços</h2>
               </div>
             </div>
           </div>
@@ -286,18 +285,17 @@
                   <span class="bi bi-cart"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Lifestyle</h2>
+                  <h2 class="title-c">Tecnologia</h2>
                 </div>
               </div>
               <div class="card-body-c">
                 <p class="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
+                  Pensar fora da caixa no mundo da tecnologia é como desdobrar um mapa do tesouro das ideias inovadoras, 
+                  onde cada ponto no mapa revela uma nova rota para o caminho da inovação.
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
+                <a href="#" class="link-c link-icon">Saiba mais
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -310,18 +308,18 @@
                   <span class="bi bi-calendar4-week"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Loans</h2>
+                  <h2 class="title-c">Consultoria</h2>
                 </div>
               </div>
               <div class="card-body-c">
                 <p class="content-c">
-                  Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                  aliquet elit, eget tincidunt
-                  nibh pulvinar a.
+                  Na UnitBox, nossa paixão pela tecnologia se transforma em ações simples. 
+                  Somos um time coeso de desenvolvedores comprometidos em levar soluções inovadoras para o mundo digital. 
+                  Combinando a expertise de ponta em design, backend e frontend.
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
+                <a href="#" class="link-c link-icon">Saiba mais
                   <span class="bi bi-calendar4-week"></span>
                 </a>
               </div>
@@ -334,18 +332,20 @@
                   <span class="bi bi-card-checklist"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Sell</h2>
+                  <h2 class="title-c">Planejamento</h2>
                 </div>
               </div>
               <div class="card-body-c">
                 <p class="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
+                  A expertise full stack é nossa força motriz. 
+                  Nossos desenvolvedores abraçam o desafio de dominar tanto o backend quanto o frontend, 
+                  permitindo-nos criar sistemas completos que fluem de maneira perfeita. Do planejamento à implementação, 
+                  nossa abordagem abrangente garante que cada detalhe seja cuidadosamente considerado, 
+                  resultando em produtos finais robustos e escaláveis.
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
+                <a href="#" class="link-c link-icon">Saiba mais
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -362,7 +362,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Latest Properties</h2>
+                <h2 class="title-a">Nossos Produtos</h2>
               </div>
               <div class="title-link">
                 <a href="property-grid.html">All Property
@@ -581,7 +581,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Best Agents</h2>
+                <h2 class="title-a">Nossa Equipe</h2>
               </div>
               <div class="title-link">
                 <a href="agents-grid.html">All Agents
@@ -612,10 +612,10 @@
                   </p>
                   <div class="info-agents color-a">
                     <p>
-                      <strong>Phone: </strong> +54 356 945234
+                      <strong>Telefone: </strong> +55 94510-8254
                     </p>
                     <p>
-                      <strong>Email: </strong> agents@example.com
+                      <strong>Email: </strong> unitbox@gmail.com
                     </p>
                   </div>
                 </div>
@@ -771,7 +771,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Latest News</h2>
+                <h2 class="title-a">Nossos Produtos</h2>
               </div>
               <div class="title-link">
                 <a href="blog-grid.html">All News
@@ -895,7 +895,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Testimonials</h2>
+                <h2 class="title-a">Avaliações</h2>
               </div>
             </div>
           </div>
@@ -946,9 +946,11 @@
                     </div>
                     <div class="testimonials-content">
                       <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
+                        A UnitBox adota o framework Laravel em sua abordagem inovadora. 
+                        Unindo custo-efetividade com criatividade, cria soluções eficazes. 
+                        Assim como Laravel é flexível, a UnitBox busca adaptabilidade. 
+                        A estrutura ágil do Laravel reflete agilidade, enquanto a integração com bancos de dados espelha soluções personalizadas da UnitBox. 
+                        Ambas valorizam comunidades ativas para suporte. 
                       </p>
                     </div>
                     <div class="testimonial-author-box">
@@ -980,8 +982,10 @@
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                Antecipamos um futuro em que a tecnologia ultrapassa as fronteiras do possível. 
+                Desejamos estar à frente da inovação, servindo como referência na concretização das ideias mais ousadas e criativas. Ao realizar isso, 
+                temos a aspiração de continuamente redefinir o panorama tecnológico, capacitando indivíduos, 
+                empresas e comunidades a enfrentar os desafios mais complexos da nossa era por meio de soluções fora da caixa.
               </p>
             </div>
             <div class="w-footer-a">
