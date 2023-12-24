@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Console\Concerns\InteractsWithIO;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Property extends Model
+class Property extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $filable = [
+    protected $fillable = [
         'title',
         'description',
         'password',
@@ -18,5 +21,8 @@ class Property extends Model
         'address',
         'city',
         'slider',
+        'price',
+        'status',
+        'visible',
     ];
 }
