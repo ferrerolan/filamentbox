@@ -10,5 +10,13 @@ class Property extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $filable = [
+        'title',
+        'description',
+        'password',
+        'country',
+        'address',
+        'city',
+        'slider',
+    ];
 }

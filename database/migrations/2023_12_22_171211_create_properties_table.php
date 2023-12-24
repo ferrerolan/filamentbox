@@ -20,15 +20,10 @@ return new class extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('address');
-            $table->unsignedInteger('price');
-            $table->unsignedInteger('sqm');
-            $table->unsignedSmallInteger('bedrooms')->nullable();
-            $table->unsignedSmallInteger('bathrooms')->nullable();
-            $table->unsignedSmallInteger('garages')->nullable();
-            $table->boolean('slider')->default(false);
             $table->boolean('visible')->default(true);
-            $table->date('start_date')->default('2022-01-01');
+            $table->date('start_date')->default('2021-01-01');
             $table->date('end_date')->default('2023-01-01');
+            $table->boolean('slider')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

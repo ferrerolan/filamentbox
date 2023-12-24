@@ -22,12 +22,6 @@ class PropertyFactory extends Factory
             'country' => $this->faker->country(),
             'city' => $this->faker->city(),
             'address' => $this->faker->address(),
-            'price' => rand(500, 5000) * 1000,
-            'sqm' => rand(150, 1500),
-            'bedrooms' => rand(3, 10),
-            'bathrooms' => rand(3, 6),
-            'garages' => rand(1, 5),
-
         ];
     }
 }
