@@ -49,6 +49,8 @@ class PropertyResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
                     ->required(),
+                    Forms\Components\DatePicker::make('end_date')
+                    ->required(),
             ]);
     }
 
