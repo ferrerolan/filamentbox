@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->boolean('slider')->default(false);
-
+            $table->boolean('visible')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ class PropertyResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->required()
                     ->maxLength(65535),
                 Forms\Components\TextInput::make('country')
@@ -39,8 +39,16 @@ class PropertyResource extends Resource
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('slider')
-                    ->required()
+                Forms\Components\TextInput::make('price')
+                    ->required(),
+                Forms\Components\Toggle::make('slider')
+                    ->required(),
+                Forms\Components\Toggle::make('visible')
+                    ->required(),
+                Forms\Components\DatePicker::make('start_date')
+                    ->required(),
+                Forms\Components\DatePicker::make('end_date')
+                    ->required(),
             ]);
     }
 
