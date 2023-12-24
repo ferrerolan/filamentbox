@@ -3,10 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PropertyResource\Pages;
-use App\Filament\Resources\PropertyResource\RelationManagers;
 use App\Models\Property;
 use Filament\Forms;
 use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\FormsComponent;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -24,7 +24,23 @@ class PropertyResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('description')
+                    ->required()
+                    ->maxLength(65535),
+                Forms\Components\TextInput::make('country')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('city')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('address')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('slider')
+                    ->required()
             ]);
     }
 
@@ -36,23 +52,16 @@ class PropertyResource extends Resource
                 Tables\Columns\TextColumn::make('country')->sortable()->searchable()->limit(12),
                 Tables\Columns\TextColumn::make('city')->sortable()->searchable()->limit(12),
                 Tables\Columns\TextColumn::make('address')->sortable()->searchable()->limit(12),
-                Tables\Columns\TextColumn::make('price')->sortable()->searchable()->limit(12),
-                Tables\Columns\TextColumn::make('sqm'),
-                Tables\Columns\TextColumn::make('bedrooms'),
-                Tables\Columns\TextColumn::make('bathrooms'),
-                Tables\Columns\TextColumn::make('garages'),
                 Tables\Columns\TextColumn::make('status')->sortable()->searchable()->limit(12),
                 Tables\Columns\TextColumn::make('type')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->searchable()->limit(12),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make(),
-                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -60,14 +69,23 @@ class PropertyResource extends Resource
                 Tables\Actions\ForceDeleteBulkAction::make(),
             ]);
     }
-    
-    public static function getRelations(): array
+
+    public static function tableColumns(Table $table): Table
     {
-        return [
-            //
-        ];
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('title')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('country')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('city')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('address')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('status')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('type')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('created_at')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->searchable()->limit(12),
+                Tables\Columns\TextColumn::make('deleted_at')->sortable()->searchable()->limit(12),
+            ]);
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -75,5 +93,18 @@ class PropertyResource extends Resource
             'create' => Pages\CreateProperty::route('/create'),
             'edit' => Pages\EditProperty::route('/{record}/edit'),
         ];
-    }    
+    }
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
 }

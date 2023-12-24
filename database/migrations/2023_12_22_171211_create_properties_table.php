@@ -16,14 +16,12 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->string('description');
             $table->string('country');
-            $table->string('city');
             $table->string('address');
-            $table->boolean('visible')->default(true);
-            $table->date('start_date')->default('2021-01-01');
-            $table->date('end_date')->default('2023-01-01');
+            $table->string('city');
             $table->boolean('slider')->default(false);
+
             $table->softDeletes();
             $table->timestamps();
         });
