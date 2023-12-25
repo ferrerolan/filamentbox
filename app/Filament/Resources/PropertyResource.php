@@ -65,9 +65,17 @@ class PropertyResource extends Resource
                                 ->columnSpan(2)
                                 ->required(),
                         ]),
-                    Tabs\Tab::make('Immage')
+                    Tabs\Tab::make('Media')
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('images')
+                            SpatieMediaLibraryFileUpload::make('image')
+                                ->image()
+                                ->collection('slider')
+                                ->columnSpan(6),
+                            SpatieMediaLibraryFileUpload::make('home')
+                                ->image()
+                                ->multiple()
+                                ->enableReordering()
+                                ->collection('home')
                                 ->columnSpan(6),
                         ])->columns(12),
                 ])
