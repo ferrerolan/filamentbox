@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Livewire\TemporaryUploadedFile as LivewireTemporaryUploadedFile;
 
 class PropertyResource extends Resource
 {
@@ -26,7 +28,7 @@ class PropertyResource extends Resource
         return $form->schema(
             Tabs::make('Heading')
                 ->tabs([
-                    Tabs\Tab::make('Perfil')
+                    Tabs\Tab::make('Bilder')
                         ->columns(12)
                         ->schema([
                             Forms\Components\TextInput::make('title')
@@ -59,23 +61,29 @@ class PropertyResource extends Resource
                                 ->columnSpan(2)
                                 ->required(),
                             Forms\Components\DatePicker::make('start_date')
-                                ->columnSpan(2)
-                                ->required(),
+                                ->columnSpan(2),
                             Forms\Components\DatePicker::make('end_date')
-                                ->columnSpan(2)
-                                ->required(),
+                                ->columnSpan(2),
                         ]),
                     Tabs\Tab::make('Media')
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('image')
+                            SpatieMediaLibraryFileUpload::make('Sliderbild')
                                 ->image()
                                 ->collection('slider')
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (LivewireTemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                        ->prepend('unit-box')
+                                )
                                 ->columnSpan(6),
-                            SpatieMediaLibraryFileUpload::make('home')
+                            SpatieMediaLibraryFileUpload::make('Hauptbilder')
                                 ->image()
                                 ->multiple()
                                 ->enableReordering()
-                                ->collection('home')
+                                ->collection('hauptbilder')
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (LivewireTemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                        ->prepend('unit-box')
+                                )
                                 ->columnSpan(6),
                         ])->columns(12),
                 ])
