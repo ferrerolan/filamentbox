@@ -3,24 +3,29 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PropertyResource\Pages;
+use App\Filament\Resources\PropertyResource\RelationManagers;
 use App\Models\Property;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Tabs;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
-use Livewire\TemporaryUploadedFile as LivewireTemporaryUploadedFile;
+use Livewire\TemporaryUploadedFile;
+use Squire\Models\Country;
 
 class PropertyResource extends Resource
 {
     protected static ?string $model = Property::class;
-    protected static ?string $modelLabel = 'cliente';
-    protected static ?string $pluralModelLabel = 'clientes';
+
+    protected static ?string $modelLabel = 'UnitBox';
+    protected static ?string $pluralModelLabel = 'Unit - Box';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -28,7 +33,7 @@ class PropertyResource extends Resource
         return $form->schema(
             Tabs::make('Heading')
                 ->tabs([
-                    Tabs\Tab::make('Bilder')
+                    Tabs\Tab::make('Profile')
                         ->columns(12)
                         ->schema([
                             Forms\Components\TextInput::make('title')
@@ -39,55 +44,63 @@ class PropertyResource extends Resource
                                 ->columnSpan(12)
                                 ->required()
                                 ->maxLength(65535),
+                            // Select::make('country')
+                            //     ->label('Land')
+                            //     ->options(Country::all()->pluck('name', 'name'))
+                            //     ->searchable()
+                            //     ->columnSpan(6)
+                            //     ->required(),
                             Forms\Components\TextInput::make('country')
-                                ->columnSpan(12)
-                                ->required()
-                                ->maxLength(255),
+                                ->label('Land')
+                                ->columnSpan(6)
+                                ->required(),
                             Forms\Components\TextInput::make('city')
-                                ->columnSpan(12)
+                                ->columnSpan(6)
                                 ->required()
                                 ->maxLength(255),
                             Forms\Components\TextInput::make('address')
-                                ->columnSpan(12)
+                                ->columnSpan(6)
                                 ->required()
                                 ->maxLength(255),
                             Forms\Components\TextInput::make('price')
-                                ->columnSpan(12)
+                                ->columnSpan(3)
                                 ->required(),
                             Forms\Components\Toggle::make('slider')
                                 ->columnSpan(2)
                                 ->required(),
                             Forms\Components\Toggle::make('visible')
-                                ->columnSpan(2)
+                                ->columnSpan(4)
                                 ->required(),
                             Forms\Components\DatePicker::make('start_date')
                                 ->columnSpan(2),
                             Forms\Components\DatePicker::make('end_date')
                                 ->columnSpan(2),
                         ]),
-                    Tabs\Tab::make('Media')
+                    Tabs\Tab::make('Bilder')
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('Sliderbild')
-                                ->image()
-                                ->collection('slider')
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (LivewireTemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                        ->prepend('unit-box')
-                                )
-                                ->columnSpan(6),
-                            SpatieMediaLibraryFileUpload::make('Hauptbilder')
+                            SpatieMediaLibraryFileUpload::make('Profile (Bitte speichern!)')
                                 ->image()
                                 ->multiple()
                                 ->enableReordering()
                                 ->collection('hauptbilder')
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (LivewireTemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                        ->prepend('unit-box')
-                                )
+                                ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                                    return (string) str($file->getClientOriginalName())->prepend('real-invest-');
+                                })
+                                ->columnSpan(6),
+                            SpatieMediaLibraryFileUpload::make('Sliderbild')
+                                ->image()
+                                ->collection('slider')
+                                ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                                    return (string) str($file->getClientOriginalName())->prepend('unit-box-');
+                                })
                                 ->columnSpan(6),
                         ])->columns(12),
                 ])
         );
+
+
+
+
     }
 
     public static function table(Table $table): Table
@@ -95,29 +108,38 @@ class PropertyResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Title')
+                    ->sortable()->searchable()
+                    ->limit(10)
+                    ->tooltip(fn (Model $record): string => "{$record->title}"),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Verändert')
                     ->sortable()
-                    ->searchable()
-                    ->limit(12),
+                    ->since()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->extraAttributes(['class' => 'bg-gray-200 dark:bg-primary-600']),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('Hauptbild')
+                    ->collection('hauptbilder')
+                    ->conversion('thumb-hauptbild')
+                    ->width(60)
+                    ->height(80)
+                    ->visibleFrom('sm'),
                 Tables\Columns\TextColumn::make('country')
+                    ->label('Land')
+                    ->sortable()->searchable()
+                    ->limit(15)
+                    ->tooltip(fn (Model $record): string => "{$record->country}"),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Price')
                     ->sortable()
-                    ->searchable()
-                    ->limit(12),
-                Tables\Columns\TextColumn::make('city')
-                    ->sortable()
-                    ->searchable()
-                    ->limit(12),
-                Tables\Columns\TextColumn::make('address')
-                    ->sortable()
-                    ->searchable()
-                    ->limit(12),
-                // ... (other columns)
-            ]);
-    }
-
-    public static function tableColumns(Table $table): Table
-    {
-        return $table
-            ->defaultSort('created_at', 'desc')
+                    ->alignRight(),
+                Tables\Columns\BooleanColumn::make('slider'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('Sliderbild')
+                    ->collection('slider')
+                    ->conversion('thumb-slider')
+                    ->width(140)
+                    ->height(80),
+            ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
@@ -131,19 +153,19 @@ class PropertyResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListProperties::route('/'),
             'create' => Pages\CreateProperty::route('/create'),
             'edit' => Pages\EditProperty::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
         ];
     }
 
