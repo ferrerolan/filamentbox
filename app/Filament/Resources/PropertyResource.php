@@ -114,12 +114,12 @@ class PropertyResource extends Resource
                     ->since()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->extraAttributes(['class' => 'bg-gray-200 dark:bg-primary-600']),
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('Hauptbild')
-                    ->collection('hauptbilder')
-                    ->conversion('thumb-hauptbild')
-                    ->width(60)
-                    ->height(80)
-                    ->visibleFrom('sm'),
+                // Tables\Columns\SpatieMediaLibraryImageColumn::make('Hauptbild')
+                //     ->collection('hauptbilder')
+                //     ->conversion('thumb-hauptbild')
+                //     ->width(60)
+                //     ->height(80)
+                //     ->visibleFrom('sm'),
                 Tables\Columns\TextColumn::make('country')
                     ->label('Land')
                     ->sortable()->searchable()
