@@ -10,6 +10,11 @@ class EditProperty extends EditRecord
 {
     protected static string $resource = PropertyResource::class;
 
+    protected function afterSave(): void
+    {
+        $this->fillForm();
+    }
+
     protected function getActions(): array
     {
         return [

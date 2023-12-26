@@ -44,14 +44,10 @@ class PropertyResource extends Resource
                                 ->columnSpan(12)
                                 ->required()
                                 ->maxLength(65535),
-                            // Select::make('country')
-                            //     ->label('Land')
-                            //     ->options(Country::all()->pluck('name', 'name'))
-                            //     ->searchable()
-                            //     ->columnSpan(6)
-                            //     ->required(),
-                            Forms\Components\TextInput::make('country')
+                            Select::make('country')
                                 ->label('Land')
+                                ->options(Country::all()->pluck('name', 'name'))
+                                ->searchable()
                                 ->columnSpan(6)
                                 ->required(),
                             Forms\Components\TextInput::make('city')
@@ -113,7 +109,7 @@ class PropertyResource extends Resource
                     ->limit(10)
                     ->tooltip(fn (Model $record): string => "{$record->title}"),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Verändert')
+                    ->label('Changed')
                     ->sortable()
                     ->since()
                     ->toggleable(isToggledHiddenByDefault: true)
@@ -133,13 +129,16 @@ class PropertyResource extends Resource
                     ->label('Price')
                     ->sortable()
                     ->alignRight(),
-                Tables\Columns\BooleanColumn::make('slider'),
+                Tables\Columns\BooleanColumn::make('slider')
+                    ->visibleFrom('md'),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('Sliderbild')
                     ->collection('slider')
                     ->conversion('thumb-slider')
                     ->width(140)
-                    ->height(80),
-            ])
+                    ->height(80)
+                    ->visibleFrom('md')
+                    ->visible('xl'),
+            ])->defaultSort('updated_at', 'desc')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
