@@ -23,7 +23,10 @@ class Property extends Model implements HasMedia
         'address',
         'price',
         'slider',
-        'visible'
+        'visible',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     public function registerMediaConversions(Media $media = null): void

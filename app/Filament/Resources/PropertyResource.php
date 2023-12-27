@@ -72,6 +72,8 @@ class PropertyResource extends Resource
                                 ->columnSpan(2),
                             Forms\Components\DatePicker::make('end_date')
                                 ->columnSpan(2),
+                            Forms\Components\Toggle::make('active')
+                                ->columnSpan(2),
                         ]),
                     Tabs\Tab::make('Bilder')
                         ->schema([

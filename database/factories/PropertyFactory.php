@@ -24,6 +24,9 @@ class PropertyFactory extends Factory
             'address' => $this->faker->address(),
             'price' => $this->faker->numberBetween(100000, 1000000),
             'slider' => $this->faker->randomElement(['1', '2', '3', '4', '5']),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'deleted_at' => null,
         ];
     }
 }
