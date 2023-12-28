@@ -20,19 +20,20 @@ class StartPagesController extends Controller
 
         $newProject = Property::where('visible', '=', 1)
         ->withWhereHas('media', function ($query){
-            $query->where('collection_name', '=', 'slider');
+            $query->where('collection_name', '=', 'hauptbilder')
+            ->orderBy('order_column', 'asc');
         })
-        ->where('slider', '=', 1)
         ->orderBy('updated_at', 'desc')
-        ->take(3)
+        ->take(4)
         ->get();
 
-        dd($newProject);
-
-
+        // dd($newProject);
         // dd($slider);
 
-        return view('pages.startpage');
+        return view('pages.startpage', [
+            'slider' => $slider,
+            'newProject' => $newProject
+        ]);
     
     }
 }
