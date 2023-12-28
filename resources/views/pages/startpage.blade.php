@@ -6,7 +6,7 @@
 
 <x-frontend.services></x-frontend.services>
 
-<x-frontend.latest></x-frontend.latest>
+<x-frontend.latest :newProject="$newProject"></x-frontend.latest>
 
   <!-- ======= Agents Section ======= -->
   <section class="section-agents section-t8">
