@@ -3,8 +3,7 @@
 @endphp
 
 
-<div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ "/storage/".$img->id."/conversions/unit-box--
-      ".$img->name. "-sliderbild.jpg" }})">
+<div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ "/storage/".$img->id."/conversions/unit-box-".$img->name. "-sliderbild.jpg" }})">
     <div class="overlay overlay-a"></div>
     <div class="intro-content display-table">
         <div class="table-cell">
