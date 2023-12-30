@@ -75,9 +75,9 @@ class PropertyResource extends Resource
                             Forms\Components\Toggle::make('active')
                                 ->columnSpan(2),
                         ]),
-                    Tabs\Tab::make('Bilder')
+                    Tabs\Tab::make('Website Images')
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('Profile (Bitte speichern!)')
+                            SpatieMediaLibraryFileUpload::make('Products')
                                 ->image()
                                 ->multiple()
                                 ->enableReordering()
@@ -86,7 +86,7 @@ class PropertyResource extends Resource
                                     return (string) str($file->getClientOriginalName())->prepend('real-invest-');
                                 })
                                 ->columnSpan(6),
-                            SpatieMediaLibraryFileUpload::make('Sliderbild')
+                            SpatieMediaLibraryFileUpload::make('Main Page')
                                 ->image()
                                 ->collection('slider')
                                 ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
