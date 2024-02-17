@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('address');
             $table->string('zip_code');
+            $table->string('city');
             $table->timestamps();
         });
     }
