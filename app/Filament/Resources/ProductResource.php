@@ -130,7 +130,7 @@ class ProductResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-
+// parou aqui
                 Tables\Columns\IconColumn::make('is_visible')->boolean()
                     ->sortable()
                     ->toggleable()
@@ -163,7 +163,11 @@ class ProductResource extends Resource
 
             ])  
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
